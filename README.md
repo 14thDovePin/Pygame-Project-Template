@@ -1,2 +1,5 @@
-# Python Project Template
-Give a brief description about the project here. This template uses an MIT license.
+# Pygame Project Template
+Give a brief description about the game here. This template uses an MIT license.
+
+## Keys
+`Ctrl`+`LShift`+`Q` = Exit Program

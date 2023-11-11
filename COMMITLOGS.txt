@@ -1,3 +1,15 @@
+Implemented a basic Pygame structure.
+
+`main.py` Changes
+- Implemented & modified the quickstart code from below.
+  + https://www.pygame.org/docs/
+- Added key function `Alt`+`F4` to exit.
+
+Other Changes
+- Modified `README.md`.
+
+
+
 Template's Initial Commit
 
 - Added the following files:
