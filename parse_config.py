@@ -3,38 +3,41 @@ from os.path import exists
 from configparser import ConfigParser
 
 
-def initialize_configuration():
-    config = ConfigParser()
+class ParseConfig:
 
-    # Sections
-    config['Screen Resolution'] = {}
-    sr = config['Screen Resolution']
-    config['Pygame Configuration'] = {}
-    pc = config['Pygame Configuration']
+    def __init__(self):
+        """Initialize configuration parser."""
+        self.config = ConfigParser()
+        self.file_check = exists('.\\config.ini')
 
-    # Screen Resolution
-    sr['height'] = '720'
-    sr['widgh'] = '1280'
+        # Check and Create `config.ini`.
+        if not self.file_check:
+            self.setup()
+            self.write_file()
 
-    # Pygame Configuration
-    pc['fps'] = '60'
+    def setup(self, ):
+        """Define sections and its variables."""
+        # Sections
+        self.config['Screen Resolution'] = {}
+        self.config['Pygame Configuration'] = {}
 
-    # Return configuration.
-    return config
+        sr = self.config['Screen Resolution']
+        pc = self.config['Pygame Configuration']
 
+        # Screen Resolution
+        sr['height'] = '720'  # Int
+        sr['widgh'] = '1280'  # Int
 
-def write_configuration(config, file_exists):
-    """Write the configuration file."""
-    if file_exists:
-        return
+        # Pygame Configuration
+        pc['fps'] = '60'  # Int
 
-    with open('config.ini', 'w') as config_file:
-        config.write(config_file)
-    print('`config.ini` Written')
+    def write_file(self):
+        """Write the `config.ini` file."""
+        print('Writing `config.ini`...')
+
+        with open('config.ini', 'w') as config_file:
+            self.config.write(config_file)
 
 
 if __name__ == '__main__':
-    # For testing purposes only..
-    config = initialize_configuration()
-    file_exists = exists('.\\config.ini')
-    write_configuration(config, file_exists)
+    config = ParseConfig()

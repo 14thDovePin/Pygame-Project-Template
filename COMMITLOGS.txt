@@ -1,9 +1,24 @@
+Converted Configuration Parser to an Object
+
+Changes
+- Refactored `COMMITLOGS.txt`.
+
+`parse_config.py` Changes
+- Created class `ParseConfig` with its `__ini__` method.
+- Changed `initialize_configuration` into method of `ParseConfig`.
+- Changed `write_configuration` into method of `ParseConfig`.
+- Changed `initialize_configuration` name to `setup`.
+- Changed `write_configuration` name to `write_file`.
+- Refactored code.
+
+
+
 Implemented Configuration Parser
 
 Changes
 - Created `parse_config.py`.
-
 - Excluded `config.ini` in `.gitignore`.
+
 `parse_config.py` Changes
 - Added `initialize_configuration` function.
 - Added `write_configuration` function.
