@@ -1,3 +1,15 @@
+Implemented Configuration Parser
+
+Changes
+- Created `parse_config.py`.
+
+- Excluded `config.ini` in `.gitignore`.
+`parse_config.py` Changes
+- Added `initialize_configuration` function.
+- Added `write_configuration` function.
+
+
+
 Refactored Code, Created Plans
 
 `main.py` Changes
