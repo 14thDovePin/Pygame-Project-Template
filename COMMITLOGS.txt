@@ -1,3 +1,11 @@
+Improved expandability of Configuration Parser.
+
+`parse_config.py` Changes
+- Added `pull` method to `ParseConfig`.
+- Modified `setup` method for better expandability.
+
+
+
 Converted Configuration Parser to an Object
 
 Changes

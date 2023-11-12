@@ -10,6 +10,17 @@ class ParseConfig:
         self.config = ConfigParser()
         self.file_check = exists('.\\config.ini')
 
+        # Data Structure for `config.ini`.
+        self.structure = {
+            "Pygame Configuration": {
+                "fps": 60,
+            },
+            "Screen Resolution": {
+                "height": 720,
+                "width": 1280,
+            },
+        }
+
         # Check and Create `config.ini`.
         if not self.file_check:
             self.setup()
@@ -17,19 +28,20 @@ class ParseConfig:
 
     def setup(self, ):
         """Define sections and its variables."""
-        # Sections
-        self.config['Screen Resolution'] = {}
-        self.config['Pygame Configuration'] = {}
+        sections = self.structure.keys()
 
-        sr = self.config['Screen Resolution']
-        pc = self.config['Pygame Configuration']
+        # Loop through the data structure.
+        for section in sections:
+            sub_section = self.structure[section]
 
-        # Screen Resolution
-        sr['height'] = '720'  # Int
-        sr['widgh'] = '1280'  # Int
+            # Create section.
+            self.config[section] = {}
 
-        # Pygame Configuration
-        pc['fps'] = '60'  # Int
+            # Add Key-Value pairs.
+            keys = sub_section.keys()
+            for k in keys:
+                value = sub_section[k]
+                self.config[section][k] = str(value)
 
     def write_file(self):
         """Write the `config.ini` file."""
@@ -38,6 +50,11 @@ class ParseConfig:
         with open('config.ini', 'w') as config_file:
             self.config.write(config_file)
 
+    def pull(self):
+        """Pull configurations from `config.ini`."""
+        pass
+
 
 if __name__ == '__main__':
     config = ParseConfig()
+    config.pull()
