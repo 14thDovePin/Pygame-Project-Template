@@ -1,3 +1,18 @@
+Refactored and finished Configuration Parser.
+
+Changes
+- Refactored code.
+
+`parse_config.py` Changes
+- Refactored code a lot.
+- Changes names of the following methods:
+  + `setup` to `_setup`
+  + `write_file` to `_write_file`
+  + `pull_data` to `_pull_data`
+- Added `_convert` method.
+
+
+
 Improved expandability of Configuration Parser.
 
 `parse_config.py` Changes
