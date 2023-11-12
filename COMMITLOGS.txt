@@ -1,3 +1,13 @@
+Refactored Code, Created Plans
+
+`main.py` Changes
+- Added a TODO list docstring.
+
+Other Changes
+- Modified `README.md`.
+
+
+
 Implemented a basic Pygame structure.
 
 `main.py` Changes

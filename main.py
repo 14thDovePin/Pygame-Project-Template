@@ -5,6 +5,18 @@ FPS = 60  # Frames per Second
 SR = (1280, 720)  # Screen Resolution
 
 
+""" TODO
+Add FPS display in game.
+Create INI configuration.
+    Move global variables into config.
+    ? Add Window Title to config.
+Dissect the following into its own files.
+    Main Loop `life_cycle.py`
+    Event Handling `events.py`
+    Display `display.py`
+"""
+
+
 def main(ML=True):
     pygame.init()
 
