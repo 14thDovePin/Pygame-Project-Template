@@ -11,6 +11,7 @@ CFS = {
         "screen_width": 1280,
     },
 }
+
 # Configuration File Name
 CFN = '.\\config.ini'
 
@@ -18,7 +19,7 @@ CFN = '.\\config.ini'
 class ParseConfig:
 
     def __init__(self):
-        """Initialize configuration parsing."""
+        """Access `data` attribute to use configuration file values."""
         # Pull configuration file structure for `config.ini`.
         self.structure = CFS
         self.sections = self.structure.keys()
@@ -28,9 +29,8 @@ class ParseConfig:
         if not file_check:
             self._create()
 
-        # The final data from `config.ini`.
+        # Pull data from `config.ini`.
         self.data = {}
-
         self._pull_data()
 
     def _create(self, ):
@@ -82,12 +82,11 @@ class ParseConfig:
             section = config[section]
             keys = section.keys()
 
-            # Check keys.
             for k in keys:
+                # Check key.
                 if k not in type_ref:
                     raise('ConfigurationFileError KeyError')
 
-            for k in keys:
                 # Store and convert its key-values pairs.
                 value = section[k]
                 value = self._convert(type_ref, k, value)
@@ -97,23 +96,15 @@ class ParseConfig:
         """Return a value with its corresponding data type."""
         convert_type = type_ref[key]
 
+        # Convert value to its corresponding data type.
         try:
-            # Int
-            if convert_type == int: return int(value)
-
-            # Float
-            elif convert_type == float: return float(value)
-
-            # String
-            elif convert_type == str: return value
-
-            # Bool
-            elif convert_type == bool:
+            if convert_type == int: return int(value)        # Int
+            elif convert_type == float: return float(value)  # Float
+            elif convert_type == str: return value           # Str
+            elif convert_type == bool:                       # Bool
                 if value.lower() == 'true': return True
                 elif value.lower() == 'false': return False
-
-            # None
-            elif convert_type == None: return None
+            elif convert_type == None: return None           # None
 
         except:
             raise('ConfigurationFileError ValueTypeMismatch')

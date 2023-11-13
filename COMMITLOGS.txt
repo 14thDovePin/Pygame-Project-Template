@@ -1,3 +1,7 @@
+Refactored code of `configuration.py`.
+
+
+
 Simplifying Configuration Initialization [002]
 
 `configuration.py` Changes
