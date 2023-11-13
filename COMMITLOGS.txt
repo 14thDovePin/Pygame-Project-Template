@@ -1,3 +1,24 @@
+Dissected `main.py`
+
+Changes
+- Created the following files:
+  + `display.py`
+  + `events.py`
+
+`main.py` Changes
+- Converted `main` function into `MyGame` class.
+- Segregated main loop into `start` method.
+- Moved events from `start` method to `events.py`.
+- Refactored code.
+
+`events.py` Changes
+- Dissected events code block to the following helper methods:
+  + `_events`
+  + `_key_down`
+  + `_window`
+
+
+
 Refactored code of `configuration.py`.
 
 

@@ -4,48 +4,47 @@ from configuration import ParseConfig
 
 
 """ TODO
-Add FPS display in game.
-Dissect the following into its own files.
-    Main Loop `life_cycle.py`
-    Event Handling `events.py`
-    Display `display.py`
+- Add an FPS display in game.
 """
 
 
-def main(ML=True):
-    pygame.init()
+class MyGame:
 
-    # Setup and pull configuration.
-    config = ParseConfig().data
+    def __init__(self):
+        """Initialize Pygame"""
+        pygame.init()
 
-    # Setup Pygame
-    resolution = config['screen_width'], config['screen_height']
-    screen = pygame.display.set_mode(resolution)
-    clock = pygame.time.Clock()
+        # Setup and pull configuration.
+        self.config = ParseConfig().data
 
-    # Pygame's Main Loop
-    while ML:  
+        # Setup Pygame
+        resolution = \
+            self.config['screen_width'], self.config['screen_height']
 
-        # Check for Events
-        for event in pygame.event.get():
+        self.screen = pygame.display.set_mode(resolution)
+        self.clock = pygame.time.Clock()
 
-            # Clicked the X or Exit button.
-            if event.type == pygame.QUIT:
-                ML = False
+    from events import (
+        _events,
+        _key_down,
+        _window,
+    )
 
-            # Keydown Events
-            elif event.type == pygame.KEYDOWN:
+    def start(self, run: bool):
+        """Start the program's life cycle."""
+        self.running = run
+        while self.running:
 
-                # `Alt`+`F4`
-                if \
-                    event.key == pygame.KMOD_ALT and \
-                    event.key == pygame.K_F4:
-                    ML = False
+            # Respond to events.
+            self._events()
 
-        clock.tick(config['fps'])  # Limit FPS
+            # Limit FPS
+            fps = self.config['fps']
+            self.clock.tick(fps)
 
-    pygame.quit()
+        pygame.quit()
 
 
 if __name__ == '__main__':
-    main()
+    game = MyGame()
+    game.start(True)
