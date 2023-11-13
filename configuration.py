@@ -4,13 +4,15 @@ from configparser import ConfigParser
 
 
 # Configuration File Structure
-CF_STRUCTURE = {
-    "Pygame Configuration": {  # Section
-        "fps": 60,             # Key-Value
+CFS = {
+    "Pygame Configuration": {  # [Section]
+        "fps": 60,             # Key = Value
         "screen_height": 720,
         "screen_width": 1280,
     },
 }
+# Configuration File Name
+CFN = '.\\config.ini'
 
 
 class ParseConfig:
@@ -18,43 +20,38 @@ class ParseConfig:
     def __init__(self):
         """Initialize configuration parsing."""
         # Pull configuration file structure for `config.ini`.
-        self.structure = CF_STRUCTURE
+        self.structure = CFS
         self.sections = self.structure.keys()
 
-        # The data pulled from `config.ini`.
-        self.data = {}
-
         # Check and create `config.ini`.
-        file_check = exists('.\\config.ini')
+        file_check = exists(CFN)
         if not file_check:
-            config = self._setup()
-            self._write_file(config)
+            self._create()
+
+        # The final data from `config.ini`.
+        self.data = {}
 
         self._pull_data()
 
-    def _setup(self, ):
-        """Define sections and its variables."""
+    def _create(self, ):
+        """Define and write the `config.ini` file."""
         config = ConfigParser()
 
         # Loop through the data structure.
         for section in self.sections:
             sub_section = self.structure[section]
+            keys = sub_section.keys()
 
             # Create section.
             config[section] = {}
+            so = config[section]  # Section Object
 
-            # Add Key-Value pairs.
-            keys = sub_section.keys()
+            # Add key-value pairs.
             for k in keys:
                 value = sub_section[k]
-                config[section][k] = str(value)
+                so[k] = str(value)
 
-        return config
-
-    def _write_file(self, config):
-        """Write the `config.ini` file."""
-        print('Writing `config.ini`...')
-
+        # Write the `config.ini` file.
         with open('config.ini', 'w') as config_file:
             config.write(config_file)
 
@@ -65,7 +62,7 @@ class ParseConfig:
         # Create reference for data type conversion.
         type_ref = {}
 
-        # Loop through the data structure.
+        # Loop through the `CFS`.
         for section in self.sections:
             sub_section = self.structure[section]
             keys = sub_section.keys()
@@ -73,11 +70,11 @@ class ParseConfig:
             for k in keys:
                 value = sub_section[k]
 
-                # Store key-value pair types.
+                # Store `key: type(value)`.
                 type_ref[k] = type(value)
 
         # Read configuration file.
-        config.read('.\\config.ini')
+        config.read(CFN)
 
         # Loop through its data structure.
         sections = config.sections()
@@ -88,7 +85,7 @@ class ParseConfig:
             # Check keys.
             for k in keys:
                 if k not in type_ref:
-                    raise('IniFileError KeyError')
+                    raise('ConfigurationFileError KeyError')
 
             for k in keys:
                 # Store and convert its key-values pairs.
@@ -119,7 +116,7 @@ class ParseConfig:
             elif convert_type == None: return None
 
         except:
-            raise('IniFileError Value_TypeMismatch')
+            raise('ConfigurationFileError ValueTypeMismatch')
 
 
 if __name__ == '__main__':

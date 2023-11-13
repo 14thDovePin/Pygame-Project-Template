@@ -1,3 +1,12 @@
+Simplifying Configuration Initialization [002]
+
+`configuration.py` Changes
+- Deprecated `_write_file` method.
+- Modified `_setup` method name to `_create`.
+- Refactored code and cleaned up comments.
+
+
+
 Simplifying Configuration Initialization [001]
 
 Changes
