@@ -6,10 +6,8 @@ from configparser import ConfigParser
 STRUCTURE = {  # Configuration Structure
     "Pygame Configuration": {
         "fps": 60,
-    },
-    "Screen Resolution": {
-        "height": 720,
-        "width": 1280,
+        "screen_height": 720,
+        "screen_width": 1280,
     },
 }
 
@@ -90,7 +88,7 @@ class ParseConfig:
             # Check keys.
             for k in keys:
                 if k not in type_ref:
-                    raise('ConfigurationFile KeyError')
+                    raise('IniFileError KeyError')
 
             for k in keys:
                 # Store and convert its key-values pairs.
@@ -102,22 +100,26 @@ class ParseConfig:
         """Return a value with its corresponding data type."""
         convert_type = type_ref[key]
 
-        # Int
-        if convert_type == int: return int(value)
+        try:
+            # Int
+            if convert_type == int: return int(value)
 
-        # Float
-        elif convert_type == float: return float(value)
+            # Float
+            elif convert_type == float: return float(value)
 
-        # String
-        elif convert_type == str: return value
+            # String
+            elif convert_type == str: return value
 
-        # Bool
-        elif convert_type == bool:
-            if value.lower() == 'true': return True
-            elif value.lower() == 'false': return False
+            # Bool
+            elif convert_type == bool:
+                if value.lower() == 'true': return True
+                elif value.lower() == 'false': return False
 
-        # None
-        elif convert_type == None: return None
+            # None
+            elif convert_type == None: return None
+
+        except:
+            raise('IniFileError Value_TypeMismatch')
 
 
 if __name__ == '__main__':

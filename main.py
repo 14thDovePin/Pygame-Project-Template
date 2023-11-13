@@ -1,8 +1,6 @@
 import pygame
 
-
-FPS = 60  # Frames per Second
-SR = (1280, 720)  # Screen Resolution
+from parse_config import ParseConfig
 
 
 """ TODO
@@ -17,8 +15,12 @@ Dissect the following into its own files.
 def main(ML=True):
     pygame.init()
 
+    # Setup and pull configuration.
+    config = ParseConfig().data
+
     # Setup Pygame
-    screen = pygame.display.set_mode(SR)
+    resolution = config['screen_width'], config['screen_height']
+    screen = pygame.display.set_mode(resolution)
     clock = pygame.time.Clock()
 
     # Pygame's Main Loop
@@ -40,7 +42,7 @@ def main(ML=True):
                     event.key == pygame.K_F4:
                     ML = False
 
-        clock.tick(FPS)  # Limit FPS
+        clock.tick(config['fps'])  # Limit FPS
 
     pygame.quit()
 

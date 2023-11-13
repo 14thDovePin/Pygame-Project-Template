@@ -1,3 +1,14 @@
+Linked Configuration Parser with `main.py`.
+
+Changes
+- `parse_config.py` Added a raise in the `_convert` method.
+- `parse_config.py` Modified `config.ini` structure.
+- `main.py` Removed global variables for template configuration.
+- Refactored code.
+- Resolved accidental commit conflicts.
+
+
+
 Refactored and finished Configuration Parser.
 
 Changes
