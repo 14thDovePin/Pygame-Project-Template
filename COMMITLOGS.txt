@@ -1,3 +1,11 @@
+Simplifying Configuration Initialization [001]
+
+Changes
+- Renamed `parse_config.py` to `configuration.py`.
+- Refactored code.
+
+
+
 Linked Configuration Parser with `main.py`.
 
 Changes

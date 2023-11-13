@@ -3,9 +3,10 @@ from os.path import exists
 from configparser import ConfigParser
 
 
-STRUCTURE = {  # Configuration Structure
-    "Pygame Configuration": {
-        "fps": 60,
+# Configuration File Structure
+CF_STRUCTURE = {
+    "Pygame Configuration": {  # Section
+        "fps": 60,             # Key-Value
         "screen_height": 720,
         "screen_width": 1280,
     },
@@ -15,18 +16,17 @@ STRUCTURE = {  # Configuration Structure
 class ParseConfig:
 
     def __init__(self):
-        """Initialize configuration parser."""
-        self.file_check = exists('.\\config.ini')
-
-        # The data structure for `config.ini`.
-        self.structure = STRUCTURE
+        """Initialize configuration parsing."""
+        # Pull configuration file structure for `config.ini`.
+        self.structure = CF_STRUCTURE
         self.sections = self.structure.keys()
 
         # The data pulled from `config.ini`.
         self.data = {}
 
         # Check and create `config.ini`.
-        if not self.file_check:
+        file_check = exists('.\\config.ini')
+        if not file_check:
             config = self._setup()
             self._write_file(config)
 

@@ -1,6 +1,6 @@
 import pygame
 
-from parse_config import ParseConfig
+from configuration import ParseConfig
 
 
 """ TODO
