@@ -1,3 +1,14 @@
+Implemented Display Update
+
+Changes
+- Refactored code.
+- Added `set_caption` method to `MyGame` class.
+- Added `_pressed_keys` method to `events.py`.
+- Added `_display` method to `display.py`.
+- Added `_fps_meter` method to `display.py`.
+
+
+
 Dissected `main.py`
 
 Changes
