@@ -1,6 +1,6 @@
 from pygame.display import flip
 
-import pygame
+from fonts import CreateText
 
 
 def _display(self):
@@ -16,20 +16,18 @@ def _display(self):
 
 def _fps_meter(self):
     """FPS Meter"""
-    # Construct Text Content
-    fps = self.clock.get_fps()
-    fps = 'FPS: ' + str(int(fps))
+    # Construct text contents.
+    content = self.clock.get_fps()
+    content = 'FPS: ' + str(int(content))
 
-    # Construct Rendered Text
-    fps_meter_font = pygame.font.SysFont('verdana', 12)
-    fps_meter = fps_meter_font.render(fps, True, '#FFFFFF')
+    # Create text object.
+    font = CreateText(content, debug=True)
 
-    # Position Rect
+    # Position text rectangle.
     sr = self.screen_rect
     x, y = sr.right, sr.bottom
-    fps_meter_rect = fps_meter.get_rect()
-    fps_meter_rect.right = x-5
-    fps_meter_rect.bottom = y-5
+    font.rect.right = x-5
+    font.rect.bottom = y-5
 
-    # Blit Text
-    self.screen.blit(fps_meter, fps_meter_rect)
+    # Render text object on screen.
+    self.screen.blit(font.render, font.rect)

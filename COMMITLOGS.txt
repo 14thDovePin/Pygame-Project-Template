@@ -1,3 +1,17 @@
+Implemented a font creating system.
+
+Changes
+- Updated TODO list in `main.py`.
+- Added a file `fonts.py`.
+- Updated `_fpsmeter` in `display.py`.
+
+`fonts.py` Changes
+- Added `CreateText` class with the following methods:
+  + _condition_attr
+  + construct
+
+
+
 Implemented Display Update
 
 Changes

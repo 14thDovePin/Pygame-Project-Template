@@ -4,8 +4,9 @@ from configuration import ParseConfig
 
 
 """ TODO
-- Add an FPS display in game.
 - Add an inner life cycle for pausing and unpausing.
+  + When the game is paused, add a translucent (75%) gray background.
+- Add an sample object that rotates around the cursor.
 """
 
 
