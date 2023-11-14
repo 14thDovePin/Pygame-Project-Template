@@ -7,6 +7,8 @@ from configuration import ParseConfig
 - Add an inner life cycle for pausing and unpausing.
   + When the game is paused, add a translucent (75%) gray background.
 - Add an sample object that rotates around the cursor.
+- Segregate the blit of `debug_screen` of `MyGame` into its own
+  helper method.
 """
 
 
@@ -19,12 +21,19 @@ class MyGame:
         # Setup and pull configuration.
         self.config = ParseConfig().data
 
+        # Hide Cursor
+        pygame.mouse.set_visible(False)
+
         # Setup Pygame
         resolution = \
             self.config['screen_width'], self.config['screen_height']
 
+        # Surfaces
         self.screen = pygame.display.set_mode(resolution)
         self.screen_rect = self.screen.get_rect()
+        self.debug_screen = \
+            pygame.Surface(resolution, pygame.SRCALPHA)
+
         self.clock = pygame.time.Clock()
 
     """Import Class Methods"""
@@ -38,6 +47,7 @@ class MyGame:
 
     from display import (
         _display,
+        _dot_cursor,
         _fps_meter,
     )
 

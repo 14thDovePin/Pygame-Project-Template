@@ -1,3 +1,16 @@
+Added a few visual elements.
+
+- Added a transparent background to the fps meter.
+- Replaced the mouse cursor with a green dot.
+
+Changes
+- `main.py` Added another TODO item.
+- `main.py` Refactored code.
+- `display.py` Added new method `_dot_cursor`.
+- `display.py` Refactored code.
+
+
+
 Implemented a font creating system.
 
 Changes
