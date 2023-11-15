@@ -45,10 +45,18 @@ class MyGame:
         _key_down,
     )
 
+    from display_debug import(
+        _pds,
+        _fps_meter,
+    )
+
+    from display_layer_i import(
+        _layer_i,
+        _dot_cursor,
+    )
+
     from display import (
         _display,
-        _dot_cursor,
-        _fps_meter,
     )
 
     def start(self, run: bool):

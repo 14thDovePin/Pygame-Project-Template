@@ -1,3 +1,21 @@
+Restructured files and code regarding display.
+
+Changes
+- `main.py` Refactored code.
+- Added the following files:
+  + `display_debug.py`
+  + `display_lyr_i.py`
+
+Changes | `display_debug.py`
+- Added new method `_pds`.
+- Transfered and refactored `_fps_meter` from `display.py`.
+
+Changes | `display_layer_i.py`
+- Added new method `_layer_i`.
+- Moved `_dot_cursor` from `display.py`
+
+
+
 Added a few visual elements.
 
 - Added a transparent background to the fps meter.
