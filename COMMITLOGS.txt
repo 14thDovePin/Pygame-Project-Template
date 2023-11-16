@@ -1,3 +1,11 @@
+Structured code for game objects.
+
+- Added new file `objects.py`
+- Added a new directory `objects`.
+- Added `rotating_triangle.py` to `objects\`.
+
+
+
 Implemented object management block in `main.py`.
 
 - Added new file `object_updates.py`.
