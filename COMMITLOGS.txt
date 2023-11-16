@@ -1,3 +1,11 @@
+Implemented object management block in `main.py`.
+
+- Added new file `object_updates.py`.
+- `object_udpates.py` Added new method `_object_updates`.
+- Refactored code.
+
+
+
 Refactored Code
 
 - Added new file `display_top.py`.

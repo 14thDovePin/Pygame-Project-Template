@@ -48,6 +48,10 @@ class MyGame:
         _key_down,
     )
 
+    from object_updates import (
+        _object_updates,
+    )
+
     from display import (
         _display,
     )
@@ -73,6 +77,9 @@ class MyGame:
 
             # Manage events.
             self._events()
+
+            # Manage object updates.
+            self._object_updates()
 
             # Manage display.
             self._display()
