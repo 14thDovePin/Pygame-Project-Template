@@ -1,3 +1,5 @@
+from pygame import Surface, display
+
 import pygame
 
 from configuration import ParseConfig
@@ -7,8 +9,6 @@ from configuration import ParseConfig
 - Add an inner life cycle for pausing and unpausing.
   + When the game is paused, add a translucent (75%) gray background.
 - Add an sample object that rotates around the cursor.
-- Segregate the blit of `debug_screen` of `MyGame` into its own
-  helper method.
 """
 
 
@@ -18,22 +18,25 @@ class MyGame:
         """Initialize Pygame"""
         pygame.init()
 
-        # Setup and pull configuration.
+        # Setup and pull configurations.
         self.config = ParseConfig().data
 
-        # Hide Cursor
-        pygame.mouse.set_visible(False)
+        # Setup window resolution & display surfaces.
+        width = self.config['screen_width']
+        height = self.config['screen_height']
+        resolution = width, height
 
-        # Setup Pygame
-        resolution = \
-            self.config['screen_width'], self.config['screen_height']
+        self.root_surface = display.set_mode(resolution)
+        self.top_surface = Surface(resolution, pygame.SRCALPHA)
+        self.debug_surface = Surface(resolution, pygame.SRCALPHA)
 
-        # Surfaces
-        self.screen = pygame.display.set_mode(resolution)
-        self.screen_rect = self.screen.get_rect()
-        self.debug_screen = \
-            pygame.Surface(resolution, pygame.SRCALPHA)
+        # Create respective rectangles.
+        self.root_surface_rect = self.root_surface.get_rect()
+        self.top_surface_rect = self.root_surface_rect.copy()
+        self.debug_screen_rect = self.root_surface_rect.copy()
 
+        # Manage cycles.
+        self.fps = self.config['fps']
         self.clock = pygame.time.Clock()
 
     """Import Class Methods"""
@@ -45,18 +48,22 @@ class MyGame:
         _key_down,
     )
 
-    from display_debug import(
-        _pds,
-        _fps_meter,
+    from display import (
+        _display,
     )
 
-    from display_layer_i import(
-        _layer_i,
+    from display_root import(
+        _root_surface,
         _dot_cursor,
     )
 
-    from display import (
-        _display,
+    from display_top import(
+        _top_surface,
+    )
+
+    from display_debug import(
+        _debug_surface,
+        _fps_meter,
     )
 
     def start(self, run: bool):
@@ -64,21 +71,20 @@ class MyGame:
         self.running = run
         while self.running:
 
-            # Respond to events.
+            # Manage events.
             self._events()
 
-            # Manage and update display.
+            # Manage display.
             self._display()
 
-            # Limit FPS
-            fps = self.config['fps']
-            self.clock.tick(fps)
+            # Control cycles per second.
+            self.clock.tick(self.fps)
 
         pygame.quit()
 
     def set_caption(self, caption):
         """Set Window Caption"""
-        pygame.display.set_caption(caption)
+        display.set_caption(caption)
 
 
 if __name__ == '__main__':

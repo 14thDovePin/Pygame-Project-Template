@@ -2,15 +2,22 @@ from pygame.display import flip
 
 
 def _display(self):
-    """Root surface of the program."""
-    # Renew frame with color.
-    self.screen.fill('#a15cbd')
+    """Display Manager"""
+    # Color-fill root surface.
+    self.root_surface.fill('#a15cbd')
 
-    # Process & blit layer 1.
-    self._layer_i()
+    # Process root surface.
+    self._root_surface()
 
-    # Process & blit debug screen.
-    self._pds()
+    # Process top surface.
+    self._top_surface()
 
-    # Update display.
+    # Process debug surface.
+    self._debug_surface()
+
+    # Update surfaces & display.
+    tl = (0, 0)  # Top-left
+    self.root_surface.blit(self.top_surface, tl)
+    self.root_surface.blit(self.debug_surface, tl)
+
     flip()

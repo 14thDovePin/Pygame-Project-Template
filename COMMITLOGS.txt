@@ -1,3 +1,12 @@
+Refactored Code
+
+- Added new file `display_top.py`.
+- Renamed file `display_layer_i` to `display_root.py`.
+- `main.py` Modified surface variable names and added another surface.
+- `display_root.py` Renamed `_layer_i` method to `_root_surface`.
+
+
+
 Restructured files and code regarding display.
 
 Changes
