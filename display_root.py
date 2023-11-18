@@ -7,6 +7,9 @@ def _root_surface(self):
     # Root Surface
     surface = self.root_surface
 
+    # Orbiting Ship
+    self.orbiting_ship.blit(surface)
+
     # Dot Cursor
     self._dot_cursor(surface)
 

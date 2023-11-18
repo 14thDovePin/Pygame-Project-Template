@@ -1,5 +1,7 @@
 from pygame.image import load as load_image
+from pygame.math import Vector2
 from pygame.sprite import Sprite
+from pygame import mouse  # TODO: Remove | TestingOnly
 
 
 # Spritesheet DIR
@@ -11,24 +13,30 @@ class OrbitingShip(Sprite):
     def __init__(self, *args, **kwargs):
         "A rotating triangle with the cursor as its center."
         super().__init__(*args, **kwargs)
-
         # Load image or create shape.
         sprite_sheet = load_image(SS_DIR)
+        self.image = sprite_sheet
 
         # Create object rectangle.
-        # Create position vector.
-        # Create velocity vector.
+        self.rect = sprite_sheet.get_rect()
+
+        self._set_attributes()
 
     def _set_attributes(self):
         """Set the object's initial or spawn attributes."""
-        # Set starting position.
-        # Set starting velocity.
+        # Create position & velocity vector.
+        init_value = 0, 0
+        self.pos = Vector2(init_value)
+        self.vect = Vector2(init_value)
 
-    def update_object(self):
+    def update(self):
         """Update object."""
-        # Update position.
-        # Update vector.
+        # Update position & rectangle.
+        pos = mouse.get_pos()
+        self.pos = Vector2(pos)
+        self.rect.topleft = pos
 
     def blit(self, surface):
         """Blit object on surface."""
         # Blit on surface.
+        surface.blit(self.image, self.rect)

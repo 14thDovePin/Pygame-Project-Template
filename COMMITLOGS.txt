@@ -1,3 +1,17 @@
+Rendered sprite of orbiting ship.
+
+Changes
+- Refactored code.
+
+`OrbitingShip` Changes
+- Changed method name `update_object` to `update`.
+- Loaded spritesheet.
+- Loaded and set initial attributes.
+- Added update for the topleft of the object to follow mouse.
+- Added code for blitting.
+
+
+
 Refactored code; Worked on `OrbitingShip`'s sprite.
 
 Used a different sprite sheet, will update at a later commit.
