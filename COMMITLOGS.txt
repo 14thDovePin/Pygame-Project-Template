@@ -1,3 +1,14 @@
+Made general changes.
+
+Changes
+- Updated `README.md`.
+- Added `object_template.py`
+- Added method `_create_objects` in `objects.py`.
+- Created `RotatingTriangle` class in `rotating_triangle.py`.
+- Refactored code.
+
+
+
 Structured code for game objects.
 
 - Added new file `objects.py`

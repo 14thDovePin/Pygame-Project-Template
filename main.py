@@ -39,7 +39,14 @@ class MyGame:
         self.fps = self.config['fps']
         self.clock = pygame.time.Clock()
 
+        # Create game objects.
+        self._create_objects()
+
     """Import Class Methods"""
+
+    from objects import (
+        _create_objects,
+    )
 
     from events import (
         _events,
