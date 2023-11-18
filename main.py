@@ -44,7 +44,7 @@ class MyGame:
 
     """Import Class Methods"""
 
-    from objects import (
+    from create_objects import (
         _create_objects,
     )
 

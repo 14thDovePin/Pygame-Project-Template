@@ -1,3 +1,19 @@
+Refactored code; Worked on `OrbitingShip`'s sprite.
+
+Used a different sprite sheet, will update at a later commit.
+
+Changes
+- Renamed `rotating_triangle` to `orbiting_ship`.
+- Renamed `RotatingTriangle` class to `OrbitingShip`.
+- Added the following methods to `OrbitingShip`:
+  + _set_attributes
+  + update_object
+  + blit
+- Renamed `objects.py` to `create_objects.py`.
++ Refactored code.
+
+
+
 Made general changes.
 
 Changes
