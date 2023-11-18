@@ -1,3 +1,16 @@
+Created a sprite sheet divider function.
+
+Changes
+- Created `utils` directory.
+- Movde the following files into `utils`:
+  + configuration.py
+  + fonts.py
+- Created `utils\subdivide_sprite.py`.
+- Added function `subdivide_sprite` in `subdivide_sprite.py`.
+- Refactored code.
+
+
+
 Rendered sprite of orbiting ship.
 
 Changes

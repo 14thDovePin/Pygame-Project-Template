@@ -2,7 +2,7 @@ from pygame import Surface, display
 
 import pygame
 
-from configuration import ParseConfig
+from utils.configuration import ParseConfig
 
 
 """ TODO

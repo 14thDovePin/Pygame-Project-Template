@@ -1,7 +1,7 @@
 from pygame import Color
 from pygame.draw import rect as draw_rect
 
-from fonts import CreateText
+from utils.fonts import CreateText
 
 
 def _debug_surface(self):

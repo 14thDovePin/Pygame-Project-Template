@@ -22,6 +22,7 @@ class ObjectTemplate:
         """Update object."""
         # Update position.
         # Update vector.
+        # Update rectangle.
 
     def blit(self, surface):
         """Blit object on surface."""
