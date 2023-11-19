@@ -15,13 +15,19 @@ class OrbitingShip(Sprite):
     def __init__(self, *args, **kwargs):
         "A rotating triangle with the cursor as its center."
         super().__init__(*args, **kwargs)
-        # Load image or create shape.
+
+        # Load image/s or create shape.
         sprite_sheet = load_image(SS_DIR)
-        self.image = sprite_sheet
         self.sprites = subdivide_sprite(sprite_sheet, 81,82)
 
         # Create object rectangle.
         self.rect = sprite_sheet.get_rect()
+
+        # Animation index.
+        self.animation_speed = 10  # Frames per frame.
+        self.creation_index = [0, 8, 1, 9]
+        self.motion_index = [2, 10, 3, 11]
+        self.destroy_index = [4, 5, 6, 7]
 
         self._set_attributes()
 
@@ -35,14 +41,35 @@ class OrbitingShip(Sprite):
         # Set rectangle.
         self.rect.bottomright = self.rect.topleft
 
-    def update(self):
+        # Set index and image.
+        self.current_index = 0
+        self.image = self.sprites[0]
+
+    def update(self, current_frame):
         """Update object."""
         # Update position & rectangle.
         pos = mouse.get_pos()
         self.pos = Vector2(pos)
         self.rect.topleft = pos
 
+        # Update animation index.
+        if current_frame % self.animation_speed == 0:
+            self._next_frame(self.motion_index)
+
+    def _next_frame(self, animation_index):
+        """Update sprite with the next frame."""
+        # Update current index.
+        if self.current_index < len(animation_index)-1:
+            self.current_index += 1
+        else:
+            self.current_index = 0
+
+        # Update sprite.
+        idx = animation_index[self.current_index]
+        img = self.sprites[idx]
+        self.image = img
+
     def blit(self, surface):
         """Blit object on surface."""
         # Blit on surface.
-        surface.blit(self.sprites[9], self.rect)
+        surface.blit(self.image, self.rect)

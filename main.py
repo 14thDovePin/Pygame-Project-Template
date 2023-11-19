@@ -80,6 +80,7 @@ class MyGame:
     def start(self, run: bool):
         """Start the program's life cycle."""
         self.running = run
+        self.current_frame = 0
         while self.running:
 
             # Manage events.

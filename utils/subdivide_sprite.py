@@ -23,8 +23,6 @@ def subdivide_sprite(sprite_sheet, width, height, border=1):
     ss_rect = sprite_sheet.get_rect()
 
     # Set cell values.
-    print(width, border)
-    print(height, border)
     cwidth = width+border
     cheight = height+border
 

@@ -1,3 +1,13 @@
+Animated sprite of orbiting ship.
+
+Changes
+- Added method `_next_frame` in `orbiting_ship.py`.
+- Animated sprites of `OrbitingShip`.
+- Tracked the cycle count of the game.
+- Refactored code.
+
+
+
 Created a sprite sheet divider function.
 
 Changes
